@@ -7,12 +7,24 @@ import org.openqa.selenium.WebElement;
 
 public class HomePage {
     private final WebDriver driver;
-    private final By solutionsMenu = By.cssSelector("a[href*='solutions']");
-    private final By cadresExpertsLink = By.cssSelector("a[href*='cadres-experts']");
-    private final By contactButton = By.cssSelector("a[href*='contact']");
+    private final By accCookiesButton = By.xpath("//button[@data-cky-tag='accept-button']");
+    private final By accAdsButton = By.xpath("//a[@class='da-close evr-close']");
+    private final By solutionsMenu = By.xpath("//a[normalize-space()='Nos solutions']");
+    private final By cadresExpertsLink = By.xpath("//a[@href='/nos-solutions/recrutement-cadres-experts/']");
+    private final By contactButton = By.xpath("//a[@href='/contactez-nous/'']");
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
+    }
+
+    public void acceptCookies() {
+        WebElement acceptCookiesButton = CommonUtils.waitForElementClickable(accCookiesButton);
+        acceptCookiesButton.click();
+    }
+
+    public void acceptAds() {
+        WebElement acceptAdsButton = CommonUtils.waitForElementClickable(accAdsButton);
+        acceptAdsButton.click();
     }
 
     public void navigateToSolutions() {

@@ -1,8 +1,8 @@
 package fr.upskills.config;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -24,20 +24,23 @@ public class DriverConfig {
             e.printStackTrace();
         }
 
-        String browser = properties.getProperty("browser", "chrome");
+        String browser = properties.getProperty("browser", "chrome").trim();
         switch (browser.toLowerCase()) {
             case "firefox":
-                WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
                 break;
             default:
-                WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--remote-allow-origins=*");
+                driver = new ChromeDriver(options);
         }
 
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Integer.parseInt(properties.getProperty("implicit.wait", "10"))));
-        wait = new WebDriverWait(driver, Duration.ofSeconds(Integer.parseInt(properties.getProperty("explicit.wait", "20"))));
+        int implicitWait = Integer.parseInt(properties.getProperty("implicit.wait", "10").trim());
+        int explicitWait = Integer.parseInt(properties.getProperty("explicit.wait", "20").trim());
+        
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitWait));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(explicitWait));
     }
 
     public static WebDriver getDriver() {
