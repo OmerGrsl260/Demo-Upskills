@@ -16,6 +16,7 @@ target/
 *.log
 
 # Allure
+.allure/
 allure-results/
 allure-report/
 
