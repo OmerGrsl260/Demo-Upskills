@@ -36,11 +36,27 @@ pipeline {
                 ])
             }
         }
+        
+        stage('Deploy') {
+            when {
+                branch 'main'
+            }
+            steps {
+                echo 'Déploiement en production...'
+                // Ajoutez ici vos commandes de déploiement
+            }
+        }
     }
     
     post {
         always {
             cleanWs()
+        }
+        success {
+            echo "Pipeline réussi sur la branche ${BRANCH_NAME}"
+        }
+        failure {
+            echo "Pipeline échoué sur la branche ${BRANCH_NAME}"
         }
     }
 } 
