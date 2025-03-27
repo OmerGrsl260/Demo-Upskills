@@ -6,6 +6,13 @@ pipeline {
         jdk 'JDK 17'
     }
     
+    environment {
+        JAVA_HOME = tool 'JDK 17'
+        PATH = "${JAVA_HOME}/bin;${env.PATH}"
+        MAVEN_HOME = tool 'Maven 3.9.9'
+        PATH = "${MAVEN_HOME}/bin;${env.PATH}"
+    }
+    
     stages {
         stage('Checkout') {
             steps {
@@ -15,7 +22,11 @@ pipeline {
         
         stage('Build') {
             steps {
-                bat 'mvn clean install -DskipTests'
+                bat '''
+                    echo JAVA_HOME=%JAVA_HOME%
+                    echo PATH=%PATH%
+                    mvn clean install -DskipTests
+                '''
             }
         }
         
