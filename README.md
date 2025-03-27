@@ -14,7 +14,7 @@
 
 Ce projet contient les tests automatisés pour le site [upskills.fr](https://upskills.fr) utilisant les technologies suivantes :
 - 🎯 Selenium WebDriver pour l'automatisation
-- 🥒 Cucumber pour les tests BDD
+- 🥒 Cucumber pour les tests en langage Gherkin
 - 📊 Allure Reports pour les rapports de test
 - 🏗️ Page Object Model pour une meilleure maintenance
 
@@ -46,7 +46,7 @@ src/
 
 1. Cloner le repository :
 ```bash
-git clone [URL_DU_REPO]
+git clone https://github.com/OmerGrsl260/Demo-Upskills.git
 ```
 
 2. Installer les dépendances :
@@ -76,7 +76,7 @@ mvn allure:serve
 ## ⚙️ Configuration
 
 Les paramètres de configuration se trouvent dans `src/test/resources/config.properties` :
-- 🌐 `base.url` : URL du site
+- 🌐 `base.url` : https://upskills.fr
 - 🌍 `browser` : Navigateur à utiliser (chrome/firefox)
 - ⏱️ `implicit.wait` : Temps d'attente implicite en secondes
 - ⏰ `explicit.wait` : Temps d'attente explicite en secondes
@@ -98,13 +98,13 @@ Les contributions sont les bienvenues ! N'hésitez pas à :
 
 ## 📝 Licence
 
-Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
+Ce projet n'est pas encore sous licence MIT...
 
-## 👥 Auteurs
+## 👥 Auteur
 
-- [Votre Nom](https://github.com/votre-username)
+- [Omer Gursel](https://github.com/OmerGrsl260)
 
 ---
 <div align="center">
-Made with ❤️ for UpSkills
+Fait avec ❤️ pour UpSkills
 </div> 
