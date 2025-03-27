@@ -21,26 +21,22 @@ pipeline {
         
         stage('Build') {
             steps {
-                bat '''
-                    set "JAVA_HOME=%JAVA_HOME%"
-                    set "MAVEN_HOME=%MAVEN_HOME%"
-                    set "PATH=%JAVA_HOME%\\bin;%MAVEN_HOME%\\bin;%PATH%"
-                    echo JAVA_HOME=%JAVA_HOME%
-                    echo PATH=%PATH%
-                    echo MAVEN_HOME=%MAVEN_HOME%
-                    "%MAVEN_HOME%\\bin\\mvn.cmd" clean install -DskipTests
-                '''
+                withMaven(maven: 'Maven 3.9.9', jdk: 'JDK 17') {
+                    bat '''
+                        echo JAVA_HOME=%JAVA_HOME%
+                        echo PATH=%PATH%
+                        echo MAVEN_HOME=%MAVEN_HOME%
+                        mvn clean install -DskipTests
+                    '''
+                }
             }
         }
         
         stage('Test') {
             steps {
-                bat '''
-                    set "JAVA_HOME=%JAVA_HOME%"
-                    set "MAVEN_HOME=%MAVEN_HOME%"
-                    set "PATH=%JAVA_HOME%\\bin;%MAVEN_HOME%\\bin;%PATH%"
-                    "%MAVEN_HOME%\\bin\\mvn.cmd" test
-                '''
+                withMaven(maven: 'Maven 3.9.9', jdk: 'JDK 17') {
+                    bat 'mvn test'
+                }
             }
         }
         
