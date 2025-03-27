@@ -26,7 +26,8 @@ pipeline {
                     set PATH=%JAVA_HOME%\\bin;%MAVEN_HOME%\\bin;%PATH%
                     echo JAVA_HOME=%JAVA_HOME%
                     echo PATH=%PATH%
-                    "%MAVEN_HOME%\\bin\\mvn.cmd" clean install -DskipTests
+                    echo MAVEN_HOME=%MAVEN_HOME%
+                    mvn clean install -DskipTests
                 '''
             }
         }
@@ -36,7 +37,7 @@ pipeline {
                 bat '''
                     set JAVA_HOME=%JAVA_HOME%
                     set PATH=%JAVA_HOME%\\bin;%MAVEN_HOME%\\bin;%PATH%
-                    "%MAVEN_HOME%\\bin\\mvn.cmd" test
+                    mvn test
                 '''
             }
         }
