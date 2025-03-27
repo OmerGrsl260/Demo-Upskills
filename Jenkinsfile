@@ -36,11 +36,26 @@ pipeline {
                 ])
             }
         }
+        
+        stage('Deploy') {
+            when {
+                branch 'main'
+            }
+            steps {
+                echo 'Pipeline GitHub - Pas de déploiement automatique configuré'
+            }
+        }
     }
     
     post {
         always {
             cleanWs()
+        }
+        success {
+            echo "Pipeline réussi sur la branche ${BRANCH_NAME}"
+        }
+        failure {
+            echo "Pipeline échoué sur la branche ${BRANCH_NAME}"
         }
     }
 } 
