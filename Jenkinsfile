@@ -22,16 +22,22 @@ pipeline {
         stage('Build') {
             steps {
                 bat '''
+                    set JAVA_HOME=%JAVA_HOME%
+                    set PATH=%JAVA_HOME%\\bin;%MAVEN_HOME%\\bin;%PATH%
                     echo JAVA_HOME=%JAVA_HOME%
                     echo PATH=%PATH%
-                    mvn clean install -DskipTests
+                    "%MAVEN_HOME%\\bin\\mvn.cmd" clean install -DskipTests
                 '''
             }
         }
         
         stage('Test') {
             steps {
-                bat 'mvn test'
+                bat '''
+                    set JAVA_HOME=%JAVA_HOME%
+                    set PATH=%JAVA_HOME%\\bin;%MAVEN_HOME%\\bin;%PATH%
+                    "%MAVEN_HOME%\\bin\\mvn.cmd" test
+                '''
             }
         }
         
