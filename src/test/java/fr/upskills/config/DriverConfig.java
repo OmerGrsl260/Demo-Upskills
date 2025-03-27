@@ -16,6 +16,10 @@ public class DriverConfig {
     private static WebDriverWait wait;
     private static Properties properties;
 
+    public static Properties getProperties() {
+        return properties;
+    }
+
     public static void initializeDriver() {
         properties = new Properties();
         try {
