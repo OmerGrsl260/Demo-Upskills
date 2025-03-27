@@ -42,8 +42,7 @@ pipeline {
                 branch 'main'
             }
             steps {
-                echo 'Déploiement en production...'
-                // Ajoutez ici vos commandes de déploiement
+                echo 'Pipeline GitHub - Pas de déploiement automatique configuré'
             }
         }
     }
