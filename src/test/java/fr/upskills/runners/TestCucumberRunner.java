@@ -14,9 +14,9 @@ import org.junit.runner.RunWith;
                 "json:target/cucumber-reports/CucumberTestReport.json",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
         },
-        monochrome = true,
-        dryRun = false,
-        publish = true
+        //dryRun = true,
+        //publish = true,
+        monochrome = true
 )
-public class CucumberRunner {
-} 
+public class TestCucumberRunner {
+}
