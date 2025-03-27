@@ -25,7 +25,8 @@ public class NavigationSteps {
 
     @Given("je suis sur la page d'accueil")
     public void jeSuisSurLaPageDAccueil() {
-        driver.get("https://upskills.fr");
+        String url = DriverConfig.getProperties().getProperty("base.url").trim();
+        driver.get(url);
         CommonUtils.waitForPageLoad(driver);
         homePage.acceptCookies();
         homePage.acceptAds();
