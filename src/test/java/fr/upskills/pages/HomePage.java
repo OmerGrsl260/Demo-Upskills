@@ -11,7 +11,7 @@ public class HomePage {
     private final By accAdsButton = By.xpath("//a[@class='da-close evr-close']");
     private final By solutionsMenu = By.xpath("//a[normalize-space()='Nos solutions']");
     private final By cadresExpertsLink = By.xpath("//a[@href='/nos-solutions/recrutement-cadres-experts/']");
-    private final By contactButton = By.xpath("//a[@href='/contactez-nous/'']");
+    private final By contactButton = By.xpath("//*[@href='/contactez-nous/']");
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -40,9 +40,5 @@ public class HomePage {
     public void clickContact() {
         WebElement contactElement = CommonUtils.waitForElementClickable(contactButton);
         contactElement.click();
-    }
-
-    public String getPageTitle() {
-        return driver.getTitle();
     }
 } 
