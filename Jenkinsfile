@@ -8,9 +8,8 @@ pipeline {
     
     environment {
         JAVA_HOME = tool 'JDK 17'
-        PATH = "${JAVA_HOME}/bin;${env.PATH}"
         MAVEN_HOME = tool 'Maven 3.9.9'
-        PATH = "${MAVEN_HOME}/bin;${env.PATH}"
+        PATH = "${JAVA_HOME}/bin;${MAVEN_HOME}/bin;${env.PATH}"
     }
     
     stages {
